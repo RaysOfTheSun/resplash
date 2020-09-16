@@ -1,20 +1,12 @@
-import { Injectable } from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  RouterStateSnapshot,
-  Resolve,
-} from '@angular/router';
-import { Observable, of } from 'rxjs';
-import { UnsplashService } from '../../services/unsplash.service';
-import { map, catchError } from 'rxjs/operators';
-
-export interface dataMap {
-  data: any;
-  err: string;
-}
+import { Injectable } from "@angular/core";
+import { ActivatedRouteSnapshot, RouterStateSnapshot, Resolve } from "@angular/router";
+import { Observable, of } from "rxjs";
+import { UnsplashService } from "../../services/unsplash.service";
+import { map, catchError } from "rxjs/operators";
+import { dataMap } from "./dataMap";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class ImagesResolverGuard implements Resolve<dataMap> {
   constructor(private unsplashServce: UnsplashService) {}
