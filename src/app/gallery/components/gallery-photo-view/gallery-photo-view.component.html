@@ -1,0 +1,16 @@
+<div
+  class="gallery__photo-view photo-view"
+  (click)="handleClick($event)"
+  *ngIf="imageData.urls"
+>
+  <div class="photo-view__content" (click)="$event.stopPropagation()">
+    <div class="flex photo-view__header">
+      <div class="avatar"></div>
+      <div class="flex flex--col">
+        <h2>{{ imageData.user.name }}</h2>
+        <small>{{ imageData.user.username }} </small>
+      </div>
+    </div>
+    <img [src]="imageData.urls.full" class="photo-view__image" />
+  </div>
+</div>

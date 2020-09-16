@@ -1,0 +1,24 @@
+<mat-toolbar class="nav">
+  <h3>
+    <strong>YouSplash</strong>
+  </h3>
+  <a
+    mat-button
+    color="warn"
+    class="nav__logout-btn"
+    [routerLink]="['', { outlets: { system: ['logout-prompt'] } }]"
+    >Logout</a
+  >
+</mat-toolbar>
+
+<div class="gallery">
+  <ngx-masonry [options]="masonryOptions" class="gallery__masonry">
+    <app-gallery-preview
+      ngxMasonryItem
+      *ngFor="let image of images"
+      [photo-src]="image.urls.small"
+      [photoID]="image.id"
+    ></app-gallery-preview>
+  </ngx-masonry>
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,17 @@
+.nav {
+  top: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+
+  &__logout-btn {
+    margin-left: auto;
+  }
+}
+
+.gallery {
+  &__masonry {
+    margin: auto;
+    margin-top: 70px;
+  }
+}
