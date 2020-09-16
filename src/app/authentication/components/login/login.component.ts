@@ -1,17 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import {
-  FormGroup,
-  Validators,
-  AbstractControl,
-  FormBuilder,
-} from '@angular/forms';
-import { AutenticationService } from '../../services/autentication.service';
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { FormGroup, Validators, AbstractControl, FormBuilder } from "@angular/forms";
+import { AutenticationService } from "../../services/autentication.service";
+import { AppDataService } from "../../../system/services/app-data.service";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.scss"],
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
@@ -19,13 +15,14 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private frmBldr: FormBuilder,
-    private auth: AutenticationService
+    private auth: AutenticationService,
+    private dataServ: AppDataService
   ) {}
 
   ngOnInit(): void {
     this.loginForm = this.frmBldr.group({
-      username: ['', [Validators.required, Validators.minLength(1)]],
-      password: ['', [Validators.required, Validators.minLength(1)]],
+      username: ["", [Validators.required, Validators.minLength(1)]],
+      password: ["", [Validators.required, Validators.minLength(1)]],
     });
   }
 
@@ -35,18 +32,18 @@ export class LoginComponent implements OnInit {
         if (!data.authenticated) {
           this.errorMessage = data.message;
         } else {
-          this.errorMessage = '';
-          this.router.navigateByUrl('/');
+          this.errorMessage = "";
+          this.router.navigateByUrl("/");
         }
       });
     }
   }
 
   get username(): AbstractControl {
-    return this.loginForm.get('username');
+    return this.loginForm.get("username");
   }
 
   get passowrd(): AbstractControl {
-    return this.loginForm.get('password');
+    return this.loginForm.get("password");
   }
 }

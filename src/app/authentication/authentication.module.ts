@@ -6,9 +6,10 @@ import { LoginComponent } from './components/login/login.component';
 import { LogoutPromptComponent } from './components/logout-prompt/logout-prompt.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
-  declarations: [LoginComponent, LogoutPromptComponent],
+  declarations: [LoginComponent, LogoutPromptComponent, LogoutComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

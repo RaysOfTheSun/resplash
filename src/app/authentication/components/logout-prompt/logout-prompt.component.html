@@ -1,28 +1,8 @@
-<div class="flex flex--justify-center flex--align-center logout-modal">
-  <div class="logout-modal__modal">
-    <div class="logout-modal__header">
-      <h3 class="logout-modal__header-text">Logout</h3>
-    </div>
-    <div class="logout-modal__body">
-      <p class="logout-modal__text">Are you sure you wish to logout?</p>
-    </div>
-    <div class="logout-modal__buttons">
-      <button
-        class="logout-modal__button"
-        mat-button
-        color="primary"
-        [routerLink]="['']"
-      >
-        Cancel
-      </button>
-      <button
-        class="logout-modal__button"
-        mat-button
-        color="warn"
-        (click)="handleLogout()"
-      >
-        Logout
-      </button>
-    </div>
-  </div>
-</div>
+<h2 mat-dialog-title>Logout</h2>
+<mat-dialog-content>
+  <p>Are you sure you want to logout?</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button color="primary" [mat-dialog-close]>Cancel</button>
+  <button mat-button color="warn" [mat-dialog-close] (click)="handleLogout()">Logout</button>
+</mat-dialog-actions>
