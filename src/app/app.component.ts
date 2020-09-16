@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
   constructor(private serv: AppDataService) {}
 
   ngOnInit() {
-    this.serv.notifications$.subscribe((notif: AppEvent) => {
+    this.serv.notifications.subscribe((notif: AppEvent) => {
       if (notif instanceof LogInEvent) console.log("The user has logged in");
     });
   }
