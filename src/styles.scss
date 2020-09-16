@@ -41,3 +41,8 @@ body {
     font-size: 1.5rem !important;
   }
 }
+
+.modal-active {
+  max-height: 100vh;
+  overflow: hidden;
+}

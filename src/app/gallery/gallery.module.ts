@@ -8,12 +8,14 @@ import { GalleryPhotoViewComponent } from './components/gallery-photo-view/galle
 import { NgxMasonryModule } from 'ngx-masonry';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
+import { FullSizeOnClickDirective } from './directives/full-size-on-click.directive';
 
 @NgModule({
   declarations: [
     GalleryComponent,
     GalleryPreviewComponent,
     GalleryPhotoViewComponent,
+    FullSizeOnClickDirective,
   ],
   imports: [
     CommonModule,

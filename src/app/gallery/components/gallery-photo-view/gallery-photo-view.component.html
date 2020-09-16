@@ -1,4 +1,4 @@
-<div
+<!-- <div
   class="gallery__photo-view photo-view"
   (click)="handleClick($event)"
   *ngIf="imageData.urls"
@@ -12,5 +12,19 @@
       </div>
     </div>
     <img [src]="imageData.urls.full" class="photo-view__image" />
+  </div>
+</div> -->
+
+<div class="flex photo-view" *ngIf="imageData.urls" (click)="handleClick()">
+  <div class="flex flex--col photo-view__body" (click)="$event.stopPropagation()">
+    <div class="flex flex--align-center photo-view__header">
+      <div class="photo-view__avatar"></div>
+      <div>
+        <h2 class="photo-view__heading">{{ imageData.user.name }}</h2>
+        <p class="photo-view__subheading">{{ imageData.user.username }}</p>
+      </div>
+    </div>
+    <img [src]="imageData.urls.full" class="photo-view__photo" appFullSizeOnClick />
+    <div class="photo-view__suggestions"></div>
   </div>
 </div>

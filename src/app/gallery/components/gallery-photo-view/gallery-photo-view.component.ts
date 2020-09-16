@@ -1,23 +1,35 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
+import { AppDataService } from "src/app/system/services/app-data.service";
+import {
+  PhotoViewDismissedEvent,
+  PhotoViewActivatedEvent,
+} from "src/app/system/services/events/events";
 
 @Component({
-  selector: 'app-gallery-photo-view',
-  templateUrl: './gallery-photo-view.component.html',
-  styleUrls: ['./gallery-photo-view.component.scss'],
+  selector: "app-gallery-photo-view",
+  templateUrl: "./gallery-photo-view.component.html",
+  styleUrls: ["./gallery-photo-view.component.scss"],
 })
 export class GalleryPhotoViewComponent implements OnInit {
   imageData: any;
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private dataService: AppDataService
+  ) {}
 
   ngOnInit(): void {
     this.route.data.subscribe((data) => {
-      console.log(data.image.data);
       this.imageData = data.image.data;
     });
+
+    this.dataService.sendMessage(new PhotoViewActivatedEvent());
   }
+
   handleClick(e?: MouseEvent): void {
-    this.router.navigate(['/']);
+    this.dataService.sendMessage(new PhotoViewDismissedEvent());
+    this.router.navigate(["/"]);
   }
 
   childClick(e?: MouseEvent): void {
