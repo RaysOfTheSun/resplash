@@ -26,6 +26,7 @@ export class SystemTimeoutService {
 
   constructor(private systemEvents: SystemEventService) {
     this.reset = this.reset.bind(this);
+    this.start = this.start.bind(this);
     this.checkForActivity = this.checkForActivity.bind(this);
     this.handleMouseMovement = this.handleMouseMovement.bind(this);
     this.handleSystemNotification = this.handleSystemNotification.bind(this);
@@ -35,6 +36,11 @@ export class SystemTimeoutService {
     this.wasMouseMoved = false;
     this.hadServerInteraction = false;
 
+    this.systemEvents.notifications.subscribe(this.handleSystemNotification);
+  }
+
+  start() {
+    console.log("Now monitoring user activity");
     this.mouseMovement$ = fromEvent<MouseEvent>(document, "mousemove");
     this.mousemoveSub = this.mouseMovement$.subscribe(this.handleMouseMovement);
 
@@ -43,8 +49,6 @@ export class SystemTimeoutService {
     this.timerOutIntervalSub = this.timeOutInterval$.subscribe(
       this.checkForActivity
     );
-
-    this.systemEvents.notifications.subscribe(this.handleSystemNotification);
   }
 
   checkForActivity(obs) {
@@ -60,6 +64,7 @@ export class SystemTimeoutService {
     this.userInactivityCount === 0 && this.userInactivityCount++;
     if (this.userInactivityCount === 1 && !this.hasWarnedUser) {
       this.hasWarnedUser = true;
+      this.timerOutIntervalSub.unsubscribe(); // refresh the timer
       this.systemEvents.showModal("system", "inactive-timeout");
     }
   }
@@ -74,7 +79,6 @@ export class SystemTimeoutService {
   }
 
   reset() {
-    this.timerOutIntervalSub.unsubscribe(); // refresh the timer
     this.wasMouseMoved = false;
     this.hadServerInteraction = false;
     this.hasWarnedUser = false;

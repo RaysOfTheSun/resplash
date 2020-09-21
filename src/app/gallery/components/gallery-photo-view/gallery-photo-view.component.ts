@@ -20,7 +20,6 @@ export class GalleryPhotoViewComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(window.history.state.exampleData);
     this.route.data.subscribe((data) => {
       this.imageData = data.image.data;
     });
