@@ -9,7 +9,9 @@ import { EulaPromptComponent } from "../eula-prompt/eula-prompt.component";
   styleUrls: ["./eula.component.scss"],
 })
 export class EulaComponent implements OnInit {
-  constructor(public matDialog: MatDialog, private router: Router) {}
+  constructor(public matDialog: MatDialog, private router: Router) {
+    console.log(this.router.getCurrentNavigation().extras.state);
+  }
 
   ngOnInit(): void {
     const dialog = this.matDialog.open(EulaPromptComponent);

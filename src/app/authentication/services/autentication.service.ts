@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { of } from "rxjs";
 import { AppDataService } from "src/app/system/services/app-data.service";
+import { SystemEventService } from "src/app/system/services/system-event.service";
 import { LogInEvent } from "../../system/services/events/events";
 
 @Injectable({
@@ -14,7 +15,7 @@ export class AutenticationService {
       password: "12345",
     },
   };
-  constructor(private router: Router, private dataServ: AppDataService) {}
+  constructor(private router: Router, private dataServ: SystemEventService) {}
 
   authenticate(userData) {
     const { username, password } = userData;

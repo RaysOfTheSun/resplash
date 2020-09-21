@@ -23,3 +23,17 @@ export class PhotoViewDismissedEvent extends AppEvent {
     this.type = "PhotoViewDismissedEvent";
   }
 }
+
+export class UserTimeOutEvent extends AppEvent {
+  constructor() {
+    super();
+    this.type = "UserTimeOutEvent";
+  }
+}
+
+export class HttpRequestEvent extends AppEvent {
+  constructor() {
+    super();
+    this.type = "HttpRequestEvent";
+  }
+}

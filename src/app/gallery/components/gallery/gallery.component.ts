@@ -1,6 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, HostListener, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { AppDataService } from "src/app/system/services/app-data.service";
+import { SystemEventService } from "src/app/system/services/system-event.service";
 import {
   PhotoViewActivatedEvent,
   PhotoViewDismissedEvent,
@@ -21,7 +22,12 @@ export class GalleryComponent implements OnInit {
     fitWidth: true,
   };
 
-  constructor(private route: ActivatedRoute, private dataService: AppDataService) {}
+  // @HostListener("document:mousemove", ["$event"])
+  // handleKeyDown(e: MouseEvent) {
+  //   console.log(e.clientX, e.clientY);
+  // }
+
+  constructor(private route: ActivatedRoute, private dataService: SystemEventService) {}
 
   ngOnInit(): void {
     this.freezeScrolling = false;

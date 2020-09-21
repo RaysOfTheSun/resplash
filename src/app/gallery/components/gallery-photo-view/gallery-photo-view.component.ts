@@ -1,10 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { AppDataService } from "src/app/system/services/app-data.service";
 import {
   PhotoViewDismissedEvent,
   PhotoViewActivatedEvent,
 } from "src/app/system/services/events/events";
+import { SystemEventService } from "src/app/system/services/system-event.service";
 
 @Component({
   selector: "app-gallery-photo-view",
@@ -16,10 +16,11 @@ export class GalleryPhotoViewComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private dataService: AppDataService
+    private dataService: SystemEventService
   ) {}
 
   ngOnInit(): void {
+    console.log(window.history.state.exampleData);
     this.route.data.subscribe((data) => {
       this.imageData = data.image.data;
     });

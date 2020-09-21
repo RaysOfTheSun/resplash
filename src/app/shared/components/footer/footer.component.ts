@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
+import { SystemEventService } from "../../../system/services/system-event.service";
 
 @Component({
   selector: "app-footer",
@@ -7,11 +7,11 @@ import { Router } from "@angular/router";
   styleUrls: ["./footer.component.scss"],
 })
 export class FooterComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private serv: SystemEventService) {}
 
   ngOnInit(): void {}
 
   handleClick() {
-    this.router.navigate(["", { outlets: { "system-legal": "eula" } }]);
+    this.serv.showModal("system-legal", "eula");
   }
 }

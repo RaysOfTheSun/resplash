@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Are you still with us?</h2>
+<mat-dialog-content>
+  <p>Are you still with us? If you are, referesh your session in {{ timeLeft | formatTime }}</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button
+    mat-flat-button
+    mat-button
+    color="primary"
+    [mat-dialog-close]
+    (click)="handleRefreshSession()"
+  >
+    Refresh Session
+  </button>
+  <button mat-flat-button mat-button color="warn" [mat-dialog-close]>Logout</button>
+</mat-dialog-actions>

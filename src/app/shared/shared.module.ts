@@ -7,9 +7,10 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatDialogModule } from "@angular/material/dialog";
 import { FooterComponent } from "./components/footer/footer.component";
+import { FormatTimePipe } from "./pipes/format-time.pipe";
 
 @NgModule({
-  declarations: [FooterComponent],
+  declarations: [FooterComponent, FormatTimePipe],
   imports: [
     CommonModule,
     MatToolbarModule,
@@ -25,6 +26,7 @@ import { FooterComponent } from "./components/footer/footer.component";
     MatInputModule,
     MatDialogModule,
     FooterComponent,
+    FormatTimePipe,
   ],
 })
 export class SharedModule {}

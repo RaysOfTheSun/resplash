@@ -13,7 +13,7 @@ const routes: Routes = [
   {
     path: "logout-prompt",
     component: LogoutComponent,
-    outlet: "system",
+    outlet: "system-legal",
   },
 ];
 

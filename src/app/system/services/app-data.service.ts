@@ -6,16 +6,5 @@ import type { AppEvent } from "./events/events";
   providedIn: "root",
 })
 export class AppDataService {
-  private notifications$: Subject<AppEvent>;
-  constructor() {
-    this.notifications$ = new Subject();
-  }
-
-  sendMessage(message: AppEvent) {
-    this.notifications$.next(message);
-  }
-
-  get notifications() {
-    return this.notifications$;
-  }
+  constructor() {}
 }
